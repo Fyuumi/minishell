@@ -6,7 +6,7 @@
 #    By: cdenaux <cdenaux@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/07/07 17:07:05 by cdenaux           #+#    #+#              #
-#    Updated: 2026/02/25 12:11:50 by cdenaux          ###   ########.fr        #
+#    Updated: 2026/03/03 15:58:16 by cdenaux          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,6 +14,7 @@ NAME = minishell
 
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
+LDFLAGS = -lreadline
 
 #Commande pour creer la bibliotheque
 AR = ar rcs
@@ -22,8 +23,7 @@ AR = ar rcs
 RM = rm -f 
 
 # Tous les fichiers sources (mandatory)
-SRCS = 	files.c \
-	files.c \
+SRCS = 	main.c \
 
 INCLUDE = -I. -I$(LIBFT_PATH)
 
@@ -41,7 +41,8 @@ HEADER = minishell.h
 all: $(NAME)
 
 # Creation de la bibliotheque
-$(NAME): $(OBJS) $(LIBFT) $(CC) $(CFLAGS) $(OBJS) $(LIBFT) -o $(NAME)
+$(NAME): $(OBJS) $(LIBFT) 
+		$(CC) $(CFLAGS) $(OBJS) $(LIBFT) $(LDFLAGS) -o $(NAME)
 
 $(LIBFT):
 	$(MAKE) -C $(LIBFT_PATH)
