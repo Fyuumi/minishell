@@ -6,7 +6,7 @@
 /*   By: cdenaux <cdenaux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/15 10:30:46 by cdenaux           #+#    #+#             */
-/*   Updated: 2026/03/03 16:01:16 by cdenaux          ###   ########.fr       */
+/*   Updated: 2026/03/03 16:54:38 by cdenaux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,11 @@
 # include <unistd.h>
 # include <readline/readline.h>
 # include <readline/history.h>
+# include "libft.h"
 
 
-/*Dans children*/
-
+/*In cmd_utils.c*/
+char		*get_path(char **envp);
+char		*get_cmd_path(char *cmd, char **envp);
 
 #endif
