@@ -13,9 +13,19 @@
 /*function that displays a string
 should behave differently if there's a "flag" -n
 subject only mentions -n; not -e nor -E
--n => don't add a new line at the end*/
+-n => don't add a new line at the end
+does't interpret "-n" as a flag => seen as string*/
 
 #include "minishell.h"
+
+static int is_flag_n(char *arg)
+{ 
+    if (!arg || arg[0] != '-')
+        return (0);
+    if (arg[1] == 'n')
+        return (1);
+    return (0);
+}
 
 int ft_echo(char **args)
 {
@@ -26,7 +36,7 @@ int ft_echo(char **args)
         return (0);
     i = 1;
     flag_n = 0;
-    while(args[i] && args[i] == '-' && args[i + 1] == 'n')
+    while(args[i] && is_flag_n(args[i]))
     {
         flag_n = 1;
         i++;

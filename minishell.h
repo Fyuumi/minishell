@@ -34,4 +34,7 @@
 char		*get_path(char **envp);
 char		*get_cmd_path(char *cmd, char **envp);
 
+/*In Builtins*/
+int ft_echo(char **args);
+
 #endif
