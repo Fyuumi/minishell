@@ -10,22 +10,35 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+/*function that displays a string
+should behave differently if there's a "flag" -n
+subject only mentions -n; not -e nor -E
+-n => don't add a new line at the end*/
 
-//function that displays a string in the file descriptor
-//should behave differently if there's a "flag" -n
+#include "minishell.h"
 
 int ft_echo(char **args)
 {
     int i;
-    int flag;
+    int flag_n;
 
     if (!args)
-        return (1);
+        return (0);
     i = 1;
-    flag = 0;
+    flag_n = 0;
+    while(args[i] && args[i] == '-' && args[i + 1] == 'n')
+    {
+        flag_n = 1;
+        i++;
+    }
     while(args[i])
     {
-        
+        printf("%s", args[i]);
+        if (args[i + 1])
+            printf(" ");
+        i++;
     }
+    if (!flag_n)
+        printf("\n");
+    return (0);
 }

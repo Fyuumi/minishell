@@ -24,6 +24,7 @@ RM = rm -f
 
 # Tous les fichiers sources (mandatory)
 SRCS = 	main.c \
+		Builtins/echo.c \
 
 INCLUDE = -I. -I$(LIBFT_PATH)
 
@@ -64,5 +65,10 @@ fclean: clean
 # Recompilation complete
 re: fclean all
 
+# Run with valgrind for memory leak detection
+valgrind: $(NAME)
+	@valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes \
+		--suppressions=readline.supp ./$(NAME)
+
 # Declaration des regles qui ne sont pas des fichiers
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re valgrind
