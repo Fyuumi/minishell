@@ -27,8 +27,8 @@
 # include <unistd.h>
 # include <readline/readline.h>
 # include <readline/history.h>
+# include <signals.h>
 # include "libft.h"
-
 
 /*In cmd_utils.c*/
 char		*get_path(char **envp);
@@ -36,5 +36,6 @@ char		*get_cmd_path(char *cmd, char **envp);
 
 /*In Builtins*/
 int ft_echo(char **args);
+void sig(void); // in exit.c
 
 #endif
