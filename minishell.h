@@ -24,6 +24,7 @@
 # include <sys/types.h>
 # include <sys/wait.h>
 # include <unistd.h>
+# include <signal.h>
 # include <readline/readline.h>
 # include <readline/history.h>
 # include "libft.h"
@@ -67,5 +68,6 @@ char		*get_cmd_path(char *cmd, char **envp);
 /*In Builtins*/
 int ft_echo(char **args);
 int ft_env(t_env *env);
+void ft_sig(void);
 
 #endif
