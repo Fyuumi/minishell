@@ -25,6 +25,7 @@ RM = rm -f
 # Tous les fichiers sources (mandatory)
 SRCS = 	main.c \
 		Builtins/echo.c \
+		Builtins/exit.c \
 
 INCLUDE = -I. -I$(LIBFT_PATH)
 
