@@ -38,8 +38,6 @@ int main(int argc, char **argv, char **envp)
             add_history(input);
         //parse and execute the command
         cmd_input = ft_split(input, ' ');
-        //printf("Here the input we passed: %s\n", input);
-        //printf("First cmd %s second cmd %s\n", cmd_input[0], cmd_input[1]);
         free(input);
     }
 }

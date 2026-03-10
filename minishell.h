@@ -66,5 +66,6 @@ char		*get_cmd_path(char *cmd, char **envp);
 
 /*In Builtins*/
 int ft_echo(char **args);
+int ft_env(t_env *env);
 
 #endif
