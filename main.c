@@ -22,13 +22,15 @@ minishell$ exit
 
 int main(int argc, char **argv, char **envp)
 {
-    char *input;
-    char **cmd_input;
+    char    *input;
+    char    **cmd_input;
+    t_env   *env;
 
     (void)argc;
     (void)argv;
-    (void)envp;
-
+    env = init_env(envp);
+    if (!env)
+        return (1);
     while (1)
     {
         input = readline("minishell$ ");
