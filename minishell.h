@@ -27,7 +27,7 @@
 # include <unistd.h>
 # include <readline/readline.h>
 # include <readline/history.h>
-# include <signals.h>
+# include <signal.h>
 # include "libft.h"
 
 /*In cmd_utils.c*/
