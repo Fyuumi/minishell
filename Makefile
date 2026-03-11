@@ -24,6 +24,7 @@ RM = rm -f
 
 # Tous les fichiers sources (mandatory)
 SRCS = 	main.c \
+		init_env.c \
 		Builtins/echo.c \
 		Builtins/exit.c \
 
