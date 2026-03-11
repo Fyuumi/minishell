@@ -1,7 +1,9 @@
 /*Header*/
 
 #include "minishell.h"
-
+/*Version strictly compliant with subject, only handles:
+cd <relative_path>
+cd <absolute_path>*/
 int ft_cd(char **args, t_env *env)
 {
 //Check if exactly 1 arg is provided (the path)
