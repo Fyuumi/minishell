@@ -28,9 +28,10 @@ int main(int argc, char **argv, char **envp)
 
     (void)argc;
     (void)argv;
-    env = init_env(envp);
+    env = ft_init_env(envp);
     if (!env)
         return (1);
+    cmd_input = NULL;
     while (1)
     {
         ft_sig();
@@ -41,6 +42,7 @@ int main(int argc, char **argv, char **envp)
             add_history(input);
         //parse and execute the command
         cmd_input = ft_split(input, ' ');
+        ft_echo(cmd_input);
         free(input);
     }
 }

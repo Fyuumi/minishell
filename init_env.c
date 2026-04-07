@@ -15,7 +15,7 @@
 /*Splits "key=value" into a new t_env_var node.
 If there's no '=', value is NULL (e.g. export VAR with no value).*/
 
-static t_env var    *new_env_var(char *envp_entry)
+static t_env_var   *new_env_var(char *envp_entry)
 {
     t_env_var   *node;
     char        *sep;
@@ -65,7 +65,7 @@ static void     append_env_var(t_env *env, t_env_var *node)
 envp_array is left NULL : rebuilt on demand before execve() !!!! ***** Nope, need to change that later
 Returns NULL on malloc failure.*/
 
-t_env   *init_env(char **envp)
+t_env   *ft_init_env(char **envp)
 {
     t_env       *env;
     t_env_var   *node;

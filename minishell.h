@@ -24,7 +24,7 @@
 # include <sys/types.h>
 # include <sys/wait.h>
 # include <unistd.h>
-# include <signals.h>
+# include <signal.h>
 # include <readline/readline.h>
 # include <readline/history.h>
 # include "libft.h"
@@ -46,7 +46,7 @@ typedef struct s_env
 typedef struct s_cmd //Each t_cmd represents a segment between pipes
 {
     char            **args; //argv: ["ls", "-la", NULL]
-    t_redir         *redirs; //List of redirections
+    struct t_redir         *redirs; //List of redirections
     struct s_cmd    *next; //Next command in the pipe
 }   t_cmd;
 
@@ -69,5 +69,8 @@ char		*get_cmd_path(char *cmd, char **envp);
 int ft_echo(char **args);
 int ft_env(t_env *env);
 void ft_sig(void);
+
+//in init_env
+t_env   *ft_init_env(char **envp);
 
 #endif
