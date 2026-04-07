@@ -6,15 +6,14 @@
 #    By: cdenaux <cdenaux@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/07/07 17:07:05 by cdenaux           #+#    #+#              #
-#    Updated: 2026/03/03 15:58:16 by cdenaux          ###   ########.fr        #
+#    Updated: 2026/01/05 14:10:33 by cdenaux          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = minishell
+NAME = pipex
 
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
-LDFLAGS = -lreadline
 
 #Commande pour creer la bibliotheque
 AR = ar rcs
@@ -23,53 +22,36 @@ AR = ar rcs
 RM = rm -f 
 
 # Tous les fichiers sources (mandatory)
-SRCS = 	main.c \
-		Builtins/echo.c \
-		Builtins/exit.c \
-
-INCLUDE = -I. -I$(LIBFT_PATH)
-
-LIBFT_PATH = Libft
-
-LIBFT = $(LIBFT_PATH)/libft.a
+SRCS = 	children.c cmd_utils.c errors.c ft_printf.c ft_split.c ft_strjoin.c \
+		main.c pipex.c \
 
 # Fichiers objets
 OBJS = $(SRCS:.c=.o)
 
 # Fichier header
-HEADER = minishell.h
+HEADER = pipex.h
 
 # Regle par defaut
 all: $(NAME)
 
 # Creation de la bibliotheque
-$(NAME): $(OBJS) $(LIBFT) 
-		$(CC) $(CFLAGS) $(OBJS) $(LIBFT) $(LDFLAGS) -o $(NAME)
-
-$(LIBFT):
-	$(MAKE) -C $(LIBFT_PATH)
+$(NAME): $(OBJS)
+	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
 
 # Compilation des fichiers objets
 %.o: %.c $(HEADER)
-	$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
+	$(CC) $(CFLAGS) -c $< -o $@
 
 # Nettoyage des fichiers objets
 clean:
 	$(RM) $(OBJS)
-	$(MAKE) -C $(LIBFT_PATH) clean
 
 # Nettoyage complet
 fclean: clean
 	$(RM) $(NAME)
-	$(MAKE) -C $(LIBFT_PATH) fclean
 
 # Recompilation complete
 re: fclean all
 
-# Run with valgrind for memory leak detection
-valgrind: $(NAME)
-	@valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes \
-		--suppressions=readline.supp ./$(NAME)
-
 # Declaration des regles qui ne sont pas des fichiers
-.PHONY: all clean fclean re valgrind
+.PHONY: all clean fclean re
