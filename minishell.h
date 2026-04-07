@@ -69,6 +69,7 @@ char		*get_cmd_path(char *cmd, char **envp);
 int ft_echo(char **args);
 int ft_env(t_env *env);
 void ft_sig(void);
+int ft_pwd(void);
 
 //in init_env
 t_env   *ft_init_env(char **envp);

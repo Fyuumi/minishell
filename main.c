@@ -35,6 +35,7 @@ int main(int argc, char **argv, char **envp)
     while (1)
     {
         ft_sig();
+        ft_pwd();
         input = readline("minishell$ ");
         if (!input)
             break;
