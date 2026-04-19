@@ -43,7 +43,8 @@ int main(int argc, char **argv, char **envp)
             add_history(input);
         //parse and execute the command
         cmd_input = ft_split(input, ' ');
-        ft_echo(cmd_input);
+        ft_check_do_cmd(cmd_input);
+    //  ft_echo(cmd_input);
         free(input);
     }
 }

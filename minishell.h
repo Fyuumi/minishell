@@ -62,8 +62,8 @@ extern int  g_signal_received;
 //Only global allowed. Handles SIGINT and SIGQUIT.
 
 /*In cmd_utils.c*/
-char		*get_path(char **envp);
-char		*get_cmd_path(char *cmd, char **envp);
+char		*ft_get_path(char **envp);
+char		*ft_get_cmd_path(char *cmd, char **envp);
 
 /*In Builtins*/
 int ft_echo(char **args);
@@ -73,5 +73,8 @@ int ft_pwd(void);
 
 //in init_env
 t_env   *ft_init_env(char **envp);
+
+//in check_do_cmd
+void ft_check_do_cmd(char **cmd_input);
 
 #endif
