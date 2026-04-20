@@ -23,7 +23,8 @@ int ft_pwd(void)
 
     if (getcwd(cwd, sizeof(cwd)))
     {
-        printf("%s ./", cwd);
+        write(STDOUT_FILENO, cwd, ft_strlen(cwd));
+        write(STDOUT_FILENO, "./", 2);
         return (0);
     }
     //print_error("pwd", NULL, strerror(errno)); => needs print_error function

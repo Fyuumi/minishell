@@ -31,6 +31,7 @@ static void print_env_var(t_env_var *var)
 Return 1 if env is not valid, otherwise 0
 no options or arguments as asked in the subject*/
 
+
 int ft_env(t_env *env)
 {
     t_env_var   *current;

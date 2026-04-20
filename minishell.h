@@ -28,6 +28,7 @@
 # include <readline/readline.h>
 # include <readline/history.h>
 # include "libft.h"
+#include <errno.h>
 
 /*Structures*/
 typedef struct s_env_var //One node = one variable
@@ -66,15 +67,17 @@ char		*ft_get_path(char **envp);
 char		*ft_get_cmd_path(char *cmd, char **envp);
 
 /*In Builtins*/
+int ft_env(t_env *env);
 int ft_echo(char **args);
 int ft_env(t_env *env);
 void ft_sig(void);
 int ft_pwd(void);
+int ft_cd(char **args, t_env *env);
 
 //in init_env
 t_env   *ft_init_env(char **envp);
 
 //in check_do_cmd
-void ft_check_do_cmd(char **cmd_input);
+void ft_check_do_cmd(char **cmd_input, t_env *env);
 
 #endif

@@ -27,7 +27,7 @@ int ft_cd(char **args, t_env *env)
   {
     //Update PWD in environment list
     //(depends on env structure)
-    env_update(env, "PWD", new_pwd);
+    ft_env_update(env, "PWD", new_pwd);
     free(new_pwd);
   }
   return (0);

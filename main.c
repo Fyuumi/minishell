@@ -34,17 +34,18 @@ int main(int argc, char **argv, char **envp)
     cmd_input = NULL;
     while (1)
     {
-        ft_sig();
         ft_pwd();
+        ft_sig();
         input = readline("minishell$ ");
         if (!input)
-            break;
+            return(1);
+        if(!input[0])
+            continue;
         if (*input)
             add_history(input);
         //parse and execute the command
         cmd_input = ft_split(input, ' ');
-        ft_check_do_cmd(cmd_input);
-    //  ft_echo(cmd_input);
+        ft_check_do_cmd(cmd_input, env);
         free(input);
     }
 }
