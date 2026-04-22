@@ -29,7 +29,8 @@ SRCS = 	main.c \
 		Builtins/exit.c \
 		Builtins/pwd.c \
 		Builtins/env.c \
-		check_do_cmd.c 
+		check_do_cmd.c \
+		cmd_utils.c \
 
 INCLUDE = -I. -I$(LIBFT_PATH)
 

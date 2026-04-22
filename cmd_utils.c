@@ -12,6 +12,17 @@
 
 #include "minishell.h"
 
+void ft_free_strings(char **args)
+{
+	int i;
+
+	if (!args)
+		return;
+	i= 0;
+	while(args[i])
+		free(args[i++]);
+	free(args);
+}
 
  char	*ft_get_path(char **envp)
  {
@@ -29,6 +40,19 @@
  	return (NULL);
  }
 
+ static int	ft_is_exe(char *path)
+{
+	struct stat	st;
+
+	if (stat(path, &st) != 0)
+		return (0);
+	if (S_ISDIR(st.st_mode))
+		return (0);
+	if ((st.st_mode & (S_IXUSR | S_IXGRP | S_IXOTH)) == 0)
+		return (0);
+	return (1);
+}
+
  static char	*ft_join_check_path(char *dir, char *cmd)
  {
  	char	*full_path;
@@ -41,7 +65,7 @@
  	free(full_path);
  	if (!path_cmd)
  		return (NULL);
- 	if (access(path_cmd, X_OK) == 0)
+ 	if (ft_is_exe(path_cmd))
  		return (path_cmd);
  	free(path_cmd);
  	return (NULL);

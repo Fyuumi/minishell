@@ -16,6 +16,7 @@
 # define INT_MAX 2147483647
 # define INT_MIN -2147483648
 
+#include <sys/stat.h>
 # include <fcntl.h>
 # include <stdarg.h>
 # include <stdbool.h>
@@ -77,7 +78,10 @@ int ft_cd(char **args, t_env *env);
 //in init_env
 t_env   *ft_init_env(char **envp);
 
+//in ls
+int ft_ls(char **envp);
+
 //in check_do_cmd
-void ft_check_do_cmd(char **cmd_input, t_env *env);
+void ft_check_do_cmd(char **cmd_input, char **envp);
 
 #endif
