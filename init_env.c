@@ -15,6 +15,26 @@
 /*Splits "key=value" into a new t_env_var node.
 If there's no '=', value is NULL (e.g. export VAR with no value).*/
 
+char **ft_env_to_envp(t_env *env)
+{
+    char **envp;
+    t_env_var   *current;
+    int i;
+
+    i = 0;
+    envp = malloc(sizeof(char *) * ft_lstsize(env) + 1);
+    if (!envp)
+        return (NULL);
+    current = env->vars;
+    while(current)
+    {
+        envp[i] = current->value;
+        i++;
+        current = current->next;
+    }
+    envp[i] = NULL;
+    return (envp);
+}
 static t_env_var   *new_env_var(char *envp_entry)
 {
     t_env_var   *node;

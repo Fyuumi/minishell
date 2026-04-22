@@ -31,6 +31,8 @@ SRCS = 	main.c \
 		Builtins/env.c \
 		check_do_cmd.c \
 		cmd_utils.c \
+		Builtins/cd.c \
+		ft_lstsize.c \
 
 INCLUDE = -I. -I$(LIBFT_PATH)
 

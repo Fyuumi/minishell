@@ -76,12 +76,16 @@ int ft_pwd(void);
 int ft_cd(char **args, t_env *env);
 
 //in init_env
+char **ft_env_to_envp(t_env *env);
 t_env   *ft_init_env(char **envp);
 
 //in ls
 int ft_ls(char **envp);
 
 //in check_do_cmd
-void ft_check_do_cmd(char **cmd_input, char **envp);
+void ft_check_do_cmd(char **cmd_input, t_env *env);
+
+//added in libft 
+int		ft_lstsize(t_env *env);
 
 #endif
