@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cmd_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdenaux <cdenaux@student.42.fr>            +#+  +:+       +#+        */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/12 14:53:20 by cdenaux           #+#    #+#             */
-/*   Updated: 2026/03/04 15:10:38 by cdenaux          ###   ########.fr       */
+/*   Updated: 2026/04/22 15:37:58 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ void ft_free_strings(char **args)
  	full_path = ft_strjoin(dir, "/");
  	if (!full_path)
  		return (NULL);
+	path_cmd = NULL;
  	path_cmd = ft_strjoin(full_path, cmd);
  	free(full_path);
  	if (!path_cmd)

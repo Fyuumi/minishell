@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: cdenaux <cdenaux@student.42.fr>            +#+  +:+       +#+         #
+#    By: codespace <codespace@student.42.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/07/07 17:07:05 by cdenaux           #+#    #+#              #
-#    Updated: 2026/03/03 15:58:16 by cdenaux          ###   ########.fr        #
+#    Updated: 2026/04/22 11:05:33 by codespace        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,13 +25,13 @@ RM = rm -f
 # Tous les fichiers sources (mandatory)
 SRCS = 	main.c \
 		init_env.c \
-		Builtins/echo.c \
-		Builtins/exit.c \
-		Builtins/pwd.c \
-		Builtins/env.c \
+		Builtins/ft_echo.c \
+		Builtins/ft_exit.c \
+		Builtins/ft_pwd.c \
+		Builtins/ft_env.c \
 		check_do_cmd.c \
+		Builtins/ft_cd.c \
 		cmd_utils.c \
-		Builtins/cd.c \
 		ft_lstsize.c \
 
 INCLUDE = -I. -I$(LIBFT_PATH)

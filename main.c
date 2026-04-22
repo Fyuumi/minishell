@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdenaux <cdenaux@student.42.fr>            +#+  +:+       +#+        */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/03 14:39:45 by cdenaux           #+#    #+#             */
-/*   Updated: 2026/03/04 15:09:58 by cdenaux          ###   ########.fr       */
+/*   Updated: 2026/04/22 14:50:10 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ int main(int argc, char **argv, char **envp)
     env = ft_init_env(envp);
     if (!env)
         return (1);
-    cmd_input = NULL;
     while (1)
     {
         ft_pwd();

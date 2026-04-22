@@ -3,22 +3,33 @@
 /*                                                        :::      ::::::::   */
 /*   init_env.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdenaux <cdenaux@student.42.fr>            +#+  +:+       +#+        */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/12 14:53:20 by cdenaux           #+#    #+#             */
-/*   Updated: 2026/03/04 15:10:38 by cdenaux          ###   ########.fr       */
+/*   Updated: 2026/04/22 15:36:32 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-/*Splits "key=value" into a new t_env_var node.
-If there's no '=', value is NULL (e.g. export VAR with no value).*/
+t_env_var *ft_new_node(const char *key, const char *value)
+{
+    t_env_var *node;
+    
+    node = malloc(sizeof(t_env_var));
+    if (!node)
+        return (NULL);
+    node->key = ft_strdup(key);
+    node->value = ft_strdup(value);
+    node->next = NULL;
+    return (node);
+}
 
 char **ft_env_to_envp(t_env *env)
 {
     char **envp;
     t_env_var   *current;
+    char *tmp;
     int i;
 
     i = 0;
@@ -28,14 +39,20 @@ char **ft_env_to_envp(t_env *env)
     current = env->vars;
     while(current)
     {
-        envp[i] = current->value;
+        tmp = ft_strjoin(current->key, "=");
+        if (!tmp)
+            return (NULL);
+        envp[i] = ft_strjoin(tmp, current->value);
+        free(tmp);
+        if (!envp)
+             return (NULL);
         i++;
         current = current->next;
     }
     envp[i] = NULL;
     return (envp);
 }
-static t_env_var   *new_env_var(char *envp_entry)
+static t_env_var   *ft_new_env_var(char *envp)
 {
     t_env_var   *node;
     char        *sep;
@@ -43,15 +60,15 @@ static t_env_var   *new_env_var(char *envp_entry)
     node = malloc(sizeof(t_env_var));
     if (!node)
         return (NULL);
-    sep = ft_strchr(envp_entry, '=');
+    sep = ft_strchr(envp, '=');
     if (sep)
     {
-        node->key = ft_substr(envp_entry, 0, sep - envp_entry);
+        node->key = ft_substr(envp, 0, sep - envp);
         node->value = ft_strdup(sep + 1);
     }
     else
     {
-        node->key = ft_strdup(envp_entry);
+        node->key = ft_strdup(envp);
         node->value = NULL;
     }
     node->next = NULL;
@@ -66,7 +83,7 @@ static t_env_var   *new_env_var(char *envp_entry)
 
 /*Appends a node at the end of the list.*/
 
-static void     append_env_var(t_env *env, t_env_var *node)
+static void     ft_append_env_var(t_env *env, t_env_var *node)
 {
     t_env_var   *current;
 
@@ -81,6 +98,15 @@ static void     append_env_var(t_env *env, t_env_var *node)
     current->next = node;
 }
 
+
+void ft_env_update(t_env *env, const char *key, const char *value)
+{
+    t_env_var *new_node;
+    
+    new_node = ft_new_node(key, value);
+    ft_append_env_var(env, new_node);
+    return ;
+}
 /*Converts char **envp (from main) into a t_env
 envp_array is left NULL : rebuilt on demand before execve() !!!! ***** Nope, need to change that later
 Returns NULL on malloc failure.*/
@@ -99,14 +125,14 @@ t_env   *ft_init_env(char **envp)
     i = 0;
     while (envp[i])
     {
-        node = new_env_var(envp[i]);
+        node = ft_new_env_var(envp[i]);
         if (!node)
         {
             //free_env(env) **must be coded**
             free(env);
             return (NULL);
         }
-        append_env_var(env, node);
+        ft_append_env_var(env, node);
         i++;
     }
     return (env);
