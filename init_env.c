@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/12 14:53:20 by cdenaux           #+#    #+#             */
-/*   Updated: 2026/04/23 15:18:38 by codespace        ###   ########.fr       */
+/*   Updated: 2026/04/23 21:54:06 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,10 @@ t_env_var *ft_new_node(const char *key, const char *value)
     if (!node)
         return (NULL);
     node->key = ft_strdup(key);
-    node->value = ft_strdup(value);
+    if (value == NULL)
+        node->value = NULL;
+    else
+        node->value = ft_strdup(value);
     node->next = NULL;
     return (node);
 }
@@ -98,15 +101,6 @@ void     ft_append_env_var(t_env *env, t_env_var *node)
     current->next = node;
 }
 
-
-void ft_env_update(t_env *env, const char *key, const char *value)
-{
-    t_env_var *new_node;
-    
-    new_node = ft_new_node(key, value);
-    ft_append_env_var(env, new_node);
-    return ;
-}
 /*Converts char **envp (from main) into a t_env
 envp_array is left NULL : rebuilt on demand before execve() !!!! ***** Nope, need to change that later
 Returns NULL on malloc failure.*/

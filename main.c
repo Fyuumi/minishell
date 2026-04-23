@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/03 14:39:45 by cdenaux           #+#    #+#             */
-/*   Updated: 2026/04/22 14:50:10 by codespace        ###   ########.fr       */
+/*   Updated: 2026/04/23 15:41:45 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,8 @@ int main(int argc, char **argv, char **envp)
             continue;
         if (*input)
             add_history(input);
-        //parse and execute the command
         cmd_input = ft_split(input, ' ');
-        ft_check_do_cmd(cmd_input, env);
+        ft_check_do_cmd(cmd_input, env); //parse and execute the command
         free(input);
     }
 }

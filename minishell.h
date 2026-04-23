@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/15 10:30:46 by cdenaux           #+#    #+#             */
-/*   Updated: 2026/04/23 15:19:01 by codespace        ###   ########.fr       */
+/*   Updated: 2026/04/23 15:45:12 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,13 +70,19 @@ int	                ft_is_exe(char *path);
 char		        *ft_get_cmd_path(char *cmd, char **envp);
 
 /*In Builtins*/
-int                 ft_env(t_env *env);
 int                 ft_echo(char **args);
+
 int                 ft_env(t_env *env);
+void                ft_env_update(t_env *env, const char *key, const char *value);
+
 void                ft_sig(void);
+
 int                 ft_pwd(void);
+
 int                 ft_cd(char **args, t_env *env);
+
 int                 ft_export(t_env *env, char *key);
+
 int                 ft_unset(t_env *env, char *key);
 
 //in init_env
@@ -84,7 +90,6 @@ t_env_var           *ft_new_node(const char *key, const char *value);
 char                **ft_env_to_envp(t_env *env);
 t_env_var           *ft_new_env_var(char *envp);
 void                ft_append_env_var(t_env *env, t_env_var *node);
-void                ft_env_update(t_env *env, const char *key, const char *value);
 t_env               *ft_init_env(char **envp);
 
 //in check_do_cmd

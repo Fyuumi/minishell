@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   env.c                                              :+:      :+:    :+:   */
+/*   ft_env.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdenaux <cdenaux@student.42.fr>            +#+  +:+       +#+        */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/05 18:41:50 by cdenaux           #+#    #+#             */
-/*   Updated: 2026/03/05 18:42:27 by cdenaux          ###   ########.fr       */
+/*   Updated: 2026/04/23 15:42:52 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,14 @@
 Only displays if there's a value stored
 write() instead of printf() to avoid leaks (possible buffer issue with pipes)*/
 
+void ft_env_update(t_env *env, const char *key, const char *value)
+{
+    t_env_var *new_node;
+    
+    new_node = ft_new_node(key, value);
+    ft_append_env_var(env, new_node);
+    return ;
+}
 static void print_env_var(t_env_var *var)
 {
     if (!var->value)

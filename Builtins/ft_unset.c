@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/23 12:50:16 by codespace         #+#    #+#             */
-/*   Updated: 2026/04/23 15:23:36 by codespace        ###   ########.fr       */
+/*   Updated: 2026/04/23 22:18:05 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,15 +21,19 @@ int ft_unset(t_env *env, char *key)
         return (1);
     temp = env->vars;
     past = NULL;
+  
     while(temp)
     {
          if (ft_strncmp(temp->key, key, ft_strlen(key)) == 0)
             {
                 if (past)
                     past->next = temp->next;
-                free(temp ->key);
+                else
+                    env->vars = temp->next;
+                free(temp->key);
                 free(temp->value);
-                temp->next = temp->next->next;
+                free(temp);
+                return (0);
             }
         past = temp;
         temp = temp->next;
