@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/12 14:53:20 by cdenaux           #+#    #+#             */
-/*   Updated: 2026/04/22 15:36:32 by codespace        ###   ########.fr       */
+/*   Updated: 2026/04/23 15:18:38 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ char **ft_env_to_envp(t_env *env)
     envp[i] = NULL;
     return (envp);
 }
-static t_env_var   *ft_new_env_var(char *envp)
+t_env_var   *ft_new_env_var(char *envp)
 {
     t_env_var   *node;
     char        *sep;
@@ -83,7 +83,7 @@ static t_env_var   *ft_new_env_var(char *envp)
 
 /*Appends a node at the end of the list.*/
 
-static void     ft_append_env_var(t_env *env, t_env_var *node)
+void     ft_append_env_var(t_env *env, t_env_var *node)
 {
     t_env_var   *current;
 

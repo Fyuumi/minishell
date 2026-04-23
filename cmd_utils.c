@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/12 14:53:20 by cdenaux           #+#    #+#             */
-/*   Updated: 2026/04/22 15:37:58 by codespace        ###   ########.fr       */
+/*   Updated: 2026/04/23 15:19:14 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void ft_free_strings(char **args)
  	return (NULL);
  }
 
- static int	ft_is_exe(char *path)
+int	ft_is_exe(char *path)
 {
 	struct stat	st;
 
@@ -71,7 +71,7 @@ void ft_free_strings(char **args)
  	free(path_cmd);
  	return (NULL);
  }
-
+ 
  char	*ft_get_cmd_path(char *cmd, char **envp)
  {
  	char	*path_var;

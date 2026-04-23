@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/15 10:30:46 by cdenaux           #+#    #+#             */
-/*   Updated: 2026/04/22 11:03:43 by codespace        ###   ########.fr       */
+/*   Updated: 2026/04/23 15:19:01 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,27 +64,33 @@ extern int  g_signal_received;
 //Only global allowed. Handles SIGINT and SIGQUIT.
 
 /*In cmd_utils.c*/
-void        ft_free_strings(char **args);
-char		*ft_get_path(char **envp);
-char		*ft_get_cmd_path(char *cmd, char **envp);
+void                ft_free_strings(char **args);
+char		        *ft_get_path(char **envp);
+int	                ft_is_exe(char *path);
+char		        *ft_get_cmd_path(char *cmd, char **envp);
 
 /*In Builtins*/
-int         ft_env(t_env *env);
-int         ft_echo(char **args);
-int         ft_env(t_env *env);
-void        ft_sig(void);
-int         ft_pwd(void);
-int         ft_cd(char **args, t_env *env);
+int                 ft_env(t_env *env);
+int                 ft_echo(char **args);
+int                 ft_env(t_env *env);
+void                ft_sig(void);
+int                 ft_pwd(void);
+int                 ft_cd(char **args, t_env *env);
+int                 ft_export(t_env *env, char *key);
+int                 ft_unset(t_env *env, char *key);
 
 //in init_env
-char        **ft_env_to_envp(t_env *env);
-void ft_env_update(t_env *env, const char *key, const char *value);
-t_env       *ft_init_env(char **envp);
+t_env_var           *ft_new_node(const char *key, const char *value);
+char                **ft_env_to_envp(t_env *env);
+t_env_var           *ft_new_env_var(char *envp);
+void                ft_append_env_var(t_env *env, t_env_var *node);
+void                ft_env_update(t_env *env, const char *key, const char *value);
+t_env               *ft_init_env(char **envp);
 
 //in check_do_cmd
-void        ft_check_do_cmd(char **cmd_input, t_env *env);
+void                ft_check_do_cmd(char **cmd_input, t_env *env);
 
 // in ft_lstsize
-int		    ft_lstsize(t_env *env);
+int		            ft_lstsize(t_env *env);
 
 #endif

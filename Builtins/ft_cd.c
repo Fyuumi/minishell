@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cd.c                                               :+:      :+:    :+:   */
+/*   ft_cd.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/22 10:09:15 by codespace         #+#    #+#             */
-/*   Updated: 2026/04/22 10:09:19 by codespace        ###   ########.fr       */
+/*   Updated: 2026/04/23 12:51:50 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,8 @@ int ft_cd(char **args, t_env *env)
     ft_putendl_fd(strerror(errno), STDERR_FILENO);
     return (1);
   }
-            //Update PWD in environment (optionnal, but recommended) ***** check with struct decisions, I think it's not useful
-  if (pwd)  //Update PWD in environment list (depends on env structure)
-  {                               
+  if (pwd)  //Update PWD in environment list (depends on env structure) 
+  {         //Update PWD in environment (optionnal, but recommended) ***** check with struct decisions, I think it's not useful      
     ft_env_update(env, "PWD", pwd);
     free(pwd);
   }

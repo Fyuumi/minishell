@@ -6,7 +6,7 @@
 #    By: codespace <codespace@student.42.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/07/07 17:07:05 by cdenaux           #+#    #+#              #
-#    Updated: 2026/04/22 11:05:33 by codespace        ###   ########.fr        #
+#    Updated: 2026/04/23 13:08:21 by codespace        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,6 +29,8 @@ SRCS = 	main.c \
 		Builtins/ft_exit.c \
 		Builtins/ft_pwd.c \
 		Builtins/ft_env.c \
+		Builtins/ft_unset.c \
+		Builtins/ft_export.c \
 		check_do_cmd.c \
 		Builtins/ft_cd.c \
 		cmd_utils.c \
