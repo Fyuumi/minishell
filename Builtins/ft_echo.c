@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   echo.c                                             :+:      :+:    :+:   */
+/*   ft_echo.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/05 17:33:14 by cdenaux           #+#    #+#             */
-/*   Updated: 2026/04/22 10:20:19 by codespace        ###   ########.fr       */
+/*   Updated: 2026/05/11 16:20:34 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,19 @@ static int is_flag_n(char *arg)
     return (0);
 }
 
+void ft_writeforecho(char *str) // writes a string without the start "" and ends them after the secound one
+{
+    int i;
+
+    i = 1;
+    while(str[i] != '"' && str[i])
+    {
+        write(1, &str[i], 1);
+        i++;
+    }
+    return;
+}
+
 int ft_echo(char **args)
 {
     int i;
@@ -43,12 +56,15 @@ int ft_echo(char **args)
     }
     while(args[i])
     {
-        printf("%s", args[i]);
+        if (args[i][0] == '"')        // if " found like in :i echo "hey"
+            ft_writeforecho(args[i]);
+        else
+            ft_putstr_fd(args[i], 1);
         if (args[i + 1])
-            printf(" ");
+            write(1, " ", 1);
         i++;
     }
     if (!flag_n)
-        printf("\n");
+        write(1, "\n", 1);
     return (0);
 }
